@@ -1,5 +1,5 @@
 // import propTypes from 'prop-types';
-import React from 'react';
+/* import React from 'react';
 
 export default class Feedback extends React.Component {
   state = {
@@ -63,4 +63,4 @@ export default class Feedback extends React.Component {
       </>
     );
   }
-}
+} */
