@@ -13,21 +13,9 @@ export class App extends React.Component {
     bad: 0,
   };
 
-  onGood = () => {
+  onLeaveFeedback = evt => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  onNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  onBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [evt.target.name]: prevState[evt.target.name] + 1,
     }));
   };
 
@@ -44,15 +32,15 @@ export class App extends React.Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const options = ['good', 'neutral', 'bad'];
+
     return (
       <>
         <Section title={'Please leave feedback'}>
-          <FeedbackOptions options={'Good'} onLeaveFeedback={this.onGood} />
           <FeedbackOptions
-            options={'Neutral'}
-            onLeaveFeedback={this.onNeutral}
+            options={options}
+            onLeaveFeedback={this.onLeaveFeedback}
           />
-          <FeedbackOptions options={'Bad'} onLeaveFeedback={this.onBad} />
         </Section>
         <Section title={'Statistics'}>
           {this.countTotalFeedback() ? (

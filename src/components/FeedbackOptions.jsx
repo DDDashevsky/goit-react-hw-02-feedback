@@ -4,14 +4,21 @@ import { FeedbackButton } from './FeedvackOptions.styled';
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <>
-      <FeedbackButton type="button" onClick={onLeaveFeedback}>
-        {options}
-      </FeedbackButton>
+      {options.map(option => (
+        <FeedbackButton
+          type="button"
+          name={option}
+          key={option}
+          onClick={onLeaveFeedback}
+        >
+          {option}
+        </FeedbackButton>
+      ))}
     </>
   );
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
